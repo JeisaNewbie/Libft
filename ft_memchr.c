@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chanheki <chanheki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/06 14:46:53 by chanheki          #+#    #+#             */
-/*   Updated: 2022/07/06 22:27:17 by chanheki         ###   ########.fr       */
+/*   Created: 2022/07/06 21:46:33 by chanheki          #+#    #+#             */
+/*   Updated: 2022/07/06 22:00:41 by chanheki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*memset(void *b, int c, size_t len)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	unsigned	char a;
-	char			*tmp;
+	unsigned char	*s_dst;
+	unsigned char	find;
 
-	if (b == 0 || c > 255 || len == 0) // c는 unsigned char 로 강제 형변환 해야함
-		return ;
-	a = (unsigned char)c;
-	tmp = b;
-	while (len)
+	find = c;
+	s_dst = (unsigned char *)s;
+	while (n--)
 	{
-		*tmp = a;
-		tmp++;
-		len--;
+		if (*s_dst == find)
+			return (s_dst);
+		s_dst++;
 	}
-	return (b);
+	return (0);
 }

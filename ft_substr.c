@@ -1,31 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chanheki <chanheki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/06 14:46:53 by chanheki          #+#    #+#             */
-/*   Updated: 2022/07/06 22:27:17 by chanheki         ###   ########.fr       */
+/*   Created: 2022/07/06 17:44:37 by chanheki          #+#    #+#             */
+/*   Updated: 2022/07/06 18:50:28 by chanheki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*memset(void *b, int c, size_t len)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	unsigned	char a;
-	char			*tmp;
+	char	*substr;
+	int		i;
 
-	if (b == 0 || c > 255 || len == 0) // c는 unsigned char 로 강제 형변환 해야함
-		return ;
-	a = (unsigned char)c;
-	tmp = b;
-	while (len)
+	i = 0;
+	if (s == 0 || len == 0)
+		break ;
+	else
 	{
-		*tmp = a;
-		tmp++;
+		while (s[i])
+			i++;
+		if (i <= start)
+			return (0);
+	}
+	substr = (char*)malloc(sizeof(char) * len + 1);
+	if (substr == 0)
+		return (0);
+	i = 0;
+	while (len && s[start] != 0)
+	{
+		s[start] = substr[i];
+		i++;
 		len--;
 	}
-	return (b);
+	substr[i] = 0;
+	return (substr);
 }

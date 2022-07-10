@@ -1,31 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chanheki <chanheki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/06 14:46:53 by chanheki          #+#    #+#             */
-/*   Updated: 2022/07/06 22:27:17 by chanheki         ###   ########.fr       */
+/*   Created: 2022/07/06 14:45:44 by chanheki          #+#    #+#             */
+/*   Updated: 2022/07/06 18:51:16 by chanheki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-void	*memset(void *b, int c, size_t len)
+void ft_bzero (void *s, size_t n)
 {
-	unsigned	char a;
-	char			*tmp;
-
-	if (b == 0 || c > 255 || len == 0) // c는 unsigned char 로 강제 형변환 해야함
+	if (s == 0 || n == 0)
 		return ;
-	a = (unsigned char)c;
-	tmp = b;
-	while (len)
-	{
-		*tmp = a;
-		tmp++;
-		len--;
-	}
-	return (b);
+    memset(b, 0, n);
 }

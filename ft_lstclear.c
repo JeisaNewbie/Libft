@@ -1,31 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chanheki <chanheki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jhwang2 <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/06 14:46:53 by chanheki          #+#    #+#             */
-/*   Updated: 2022/07/06 22:27:17 by chanheki         ###   ########.fr       */
+/*   Created: 2022/07/07 16:31:04 by jhwang2           #+#    #+#             */
+/*   Updated: 2022/07/07 17:18:14 by jhwang2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "libft.h"
 
-void	*memset(void *b, int c, size_t len)
+void	del(void *content)
 {
-	unsigned	char a;
-	char			*tmp;
+	free (content);
+}
 
-	if (b == 0 || c > 255 || len == 0) // c는 unsigned char 로 강제 형변환 해야함
-		return ;
-	a = (unsigned char)c;
-	tmp = b;
-	while (len)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
+{
+	t_list	*tmplist;
+	
+	while (*lst)
 	{
-		*tmp = a;
-		tmp++;
-		len--;
+		del((*lst).content);
+		tmplist = *lst;
+		*lst = (*lst).next;
+		free(tmplist);
 	}
-	return (b);
 }

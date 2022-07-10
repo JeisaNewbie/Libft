@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chanheki <chanheki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/06 14:46:53 by chanheki          #+#    #+#             */
-/*   Updated: 2022/07/06 22:27:17 by chanheki         ###   ########.fr       */
+/*   Created: 2022/07/06 18:47:31 by chanheki          #+#    #+#             */
+/*   Updated: 2022/07/06 18:50:42 by chanheki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <libft.h>
 
-void	*memset(void *b, int c, size_t len)
+char	*ft_strdup(char *src)
 {
-	unsigned	char a;
-	char			*tmp;
+	int		str_length;
+	char	*dest;
 
-	if (b == 0 || c > 255 || len == 0) // c는 unsigned char 로 강제 형변환 해야함
-		return ;
-	a = (unsigned char)c;
-	tmp = b;
-	while (len)
-	{
-		*tmp = a;
-		tmp++;
-		len--;
-	}
-	return (b);
+	if (src == 0)
+		return (0);
+	str_length = ft_strlen(src);
+	dest = (char *) malloc(sizeof(char) * str_length + 1);
+	if (!dest)
+		return (0);
+	ft_memcpy(dest, src, str_length);
+	dest[str_length] = '\0';
+	return (dest);
 }
