@@ -3,27 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chanheki <chanheki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jhwang2 <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/06 15:17:53 by chanheki          #+#    #+#             */
-/*   Updated: 2022/07/06 18:51:15 by chanheki         ###   ########.fr       */
+/*   Created: 2022/07/11 08:58:59 by jhwang2           #+#    #+#             */
+/*   Updated: 2022/07/11 14:04:37 by jhwang2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include <libft.h>
 
-#include <stdlib.h>
-// calloc apple source 복붙
-// 다시 작성 해야됨
-PTR
-calloc (nelem, elsize)
-  size_t nelem, elsize;
+void	*ft_calloc(size_t count, size_t size)
 {
-  register PTR ptr;  
+	void	*tmp;
 
-  if (nelem == 0 || elsize == 0)
-    nelem = elsize = 1;
-  
-  ptr = malloc (nelem * elsize);
-  if (ptr) bzero (ptr, nelem * elsize);
-  
-  return ptr;
+	if (count == 0 || size == 0)
+		return (0);
+	tmp = (void *)malloc(sizeof(size) * count);
+	if (tmp == 0)
+		return (0);
+	return (tmp);
 }

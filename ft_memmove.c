@@ -3,13 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chanheki <chanheki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jhwang2 <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/06 22:06:24 by chanheki          #+#    #+#             */
-/*   Updated: 2022/07/06 22:17:42 by chanheki         ###   ########.fr       */
+/*   Created: 2022/07/11 09:35:29 by jhwang2           #+#    #+#             */
+/*   Updated: 2022/07/11 14:26:10 by jhwang2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
+
 int	issame(void *dst, const void *src)
 {
 	char	*tmp1;
@@ -17,7 +18,6 @@ int	issame(void *dst, const void *src)
 
 	tmp1 = dst;
 	tmp2 = src;
-
 	while (*tmp1)
 		tmp1++;
 	while (*tmp2)

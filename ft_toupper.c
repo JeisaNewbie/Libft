@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chanheki <chanheki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jhwang2 <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/06 15:51:29 by chanheki          #+#    #+#             */
-/*   Updated: 2022/07/06 18:50:25 by chanheki         ###   ########.fr       */
+/*   Created: 2022/07/11 09:44:38 by jhwang2           #+#    #+#             */
+/*   Updated: 2022/07/11 14:30:47 by jhwang2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_toupper(int  c)
+int	ft_toupper(int c)
 {
 	if ('a' <= c && c <= 'z')
 		c -= 32;

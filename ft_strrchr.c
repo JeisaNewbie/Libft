@@ -3,12 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chanheki <chanheki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jhwang2 <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/06 22:17:08 by chanheki          #+#    #+#             */
-/*   Updated: 2022/07/06 22:17:09 by chanheki         ###   ########.fr       */
+/*   Created: 2022/07/11 09:43:18 by jhwang2           #+#    #+#             */
+/*   Updated: 2022/07/11 10:19:04 by jhwang2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
+char	*strrchr(const char *s, int c)
+{
+	char	ch;
+	int		i;
 
-
+	if (s == 0 || !(0 <= c && c <= 127))
+		return (0);
+	ch = (char)c;
+	i = 0;
+	while (s[i])
+		i++;
+	while (i >= 0)
+	{
+		if (s[i] == ch)
+			return (&s[i]);
+		i--;
+	}
+	return (0);
+}

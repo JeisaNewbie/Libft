@@ -6,16 +6,19 @@
 /*   By: jhwang2 <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 17:42:42 by jhwang2           #+#    #+#             */
-/*   Updated: 2022/06/01 14:13:23 by jhwang2          ###   ########.fr       */
+/*   Updated: 2022/07/11 12:36:44 by jhwang2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
 int	ft_strncmp(char *s1, char *s2, size_t n)
 {
+	if (s1 == 0 || s2 == 0 || n == 0)
+		return (0);
 	while (n && (*s1 == *s2))
 	{
 		if (*s1 == '\0' && *s2 == '\0')
-			return (0);
+			break ;
 		n--;
 	}
 	return (*s1 - *s2);

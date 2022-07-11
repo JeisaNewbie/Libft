@@ -6,13 +6,13 @@
 /*   By: jhwang2 <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 14:53:47 by jhwang2           #+#    #+#             */
-/*   Updated: 2022/06/05 11:48:54 by jhwang2          ###   ########.fr       */
+/*   Updated: 2022/07/11 13:39:07 by jhwang2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	check_string(char *str);
 
-int	minus_atoi(char *str, int minus)
+int	minus_atoi(const char *str, int minus)
 {
 	if ((9 <= *str && *str <= 13) || *str == ' ')
 	{
@@ -21,12 +21,9 @@ int	minus_atoi(char *str, int minus)
 	}
 	if (*str == '-' || *str == '+')
 	{
-		while ((*str == '-' || *str == '+') && *str != '\0')
-		{
-			if (*str == '-')
-				minus *= -1;
-			str++;
-		}
+		if (*str == '-')
+			minus *= -1;
+		str++;
 	}
 	if ('0' <= *str && *str <= '9')
 		return (minus * check_string(str));
@@ -41,14 +38,12 @@ int	check_string(char *str)
 	while (*str != '\0' && ('0' <= *str && *str <= '9'))
 	{
 		return_atoi = return_atoi * 10 + (*str - '0');
-		if (!('0' <= *(str + 1) && *(str + 1) <= '9'))
-			return (return_atoi);
 		str++;
 	}
-	return (0);
+	return (return_atoi);
 }
 
-int	ft_atoi(char *str)
+int	ft_atoi(const char *str)
 {
 	return (minus_atoi(str, 1));
 }

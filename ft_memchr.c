@@ -3,27 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chanheki <chanheki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jhwang2 <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/06 21:46:33 by chanheki          #+#    #+#             */
-/*   Updated: 2022/07/06 22:00:41 by chanheki         ###   ########.fr       */
+/*   Created: 2022/07/11 09:34:22 by jhwang2           #+#    #+#             */
+/*   Updated: 2022/07/11 14:19:04 by jhwang2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "libft.h"
 
 void	*ft_memchr(const void *s, int c, size_t n)
 {
-	unsigned char	*s_dst;
-	unsigned char	find;
+	unsigned char	ch;
 
-	find = c;
-	s_dst = (unsigned char *)s;
-	while (n--)
+	if (s == 0 || !(0 <= c && c <= 255) || n == 0)
+		return (0);
+	ch = (unsigned char)c;
+	while (*s != '\0' || n)
 	{
-		if (*s_dst == find)
-			return (s_dst);
-		s_dst++;
+		if (*s == ch)
+			return (s);
+		s++;
+		n--;
 	}
 	return (0);
 }
