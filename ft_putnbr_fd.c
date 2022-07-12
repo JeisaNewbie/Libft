@@ -11,3 +11,28 @@
 /* ************************************************************************** */
 #include "libft.h"
 
+void	recursion(int n, int fd)
+{
+	char	c;
+
+	if (n == 0)
+		return ;
+	recursion (n / 10, fd);
+	c = (n % 10) + '0';
+	write (fd, &c, 1);
+}
+
+void	ft_putnbr_fd(int n, int fd)
+{
+	if (n == 0)
+		write (fd, "0", 1);
+	else if (n < 0)
+	{
+		if (n == -2147483648)
+			write (fd, "-2147483648", 11);
+		n *= -1;
+		recursion (n, fd);
+	}
+	else
+		recursion (n, fd);
+}

@@ -11,89 +11,66 @@
 /* ************************************************************************** */
 #include <stdlib.h>
 
-int	str_len(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i] != '\0')
-		i++;
-	return (i);
-}
-
-int	*make_arr(char *str, char *charset, int arr_size)
+int	*make_arr(char *str, char c, int str_size)
 {
 	int	*arr;
 	int	i;
-	int	j;
 
-	i = 0;
-	j = 0;
-	arr = (int *)malloc(sizeof(int) * arr_size);
+	arr = (int *)malloc(sizeof(int) * str_size + 1);
 	if (arr == 0)
 		return (arr);
-	while (charset[j])
+	i = 0;
+	while (str[i] != '\0')
 	{
-		while (i < arr_size)
-		{
-			if (j == 0)
-				arr[i] = 0;
-			if (str[i] == charset[j])
-				arr[i] = 1;
-			i++;
-		}
-		j++;
-		i = 0;
+		arr[i] = 0;
+		if (str[i] == c)
+			arr[i] = 1;
+		i++;
 	}
+	arr[i] = '\0';
 	return (arr);
 }
 
 int	str_count(char *str, int *arr, int size)
 {
 	int	i;
-	int	j;
 	int	count;
 
-	j = 0;
 	i = 0;
 	count = 0;
-	while (j < size)
+	while (i < size)
 	{
 		if (arr[i] == 0)
 		{
 			while (arr[i] == 0 && str[i] != '\0')
-			{
 				i++;
-				j++;
-			}
 			count++;
 		}
-		j++;
 		i++;
 	}
 	return (count);
 }
 
-char	*indiv_str(char *str, int *arr, int arr_size, int i)
+char	*indiv_str(char *str, int *arr, int str_size, int i)
 {
 	char	*tmp;
-	int		count;
+	int		s_len;
 	int		start_index;
 
-	count = 0;
+	s_len = 0;
 	start_index = 0;
-	tmp = (char *)malloc(sizeof(char) * arr_size + 1);
+	tmp = (char *)malloc(sizeof(char) * str_size + 1);
 	if (tmp == 0)
-		return (tmp);
-	while (i < arr_size)
+		return (0);
+	while (i < str_size)
 	{
 		while (arr[i] == 0)
 		{
-			count++;
+			s_len++;
 			tmp[start_index++] = str[i];
 			arr[i++] = 1;
 		}
-		if (count > 0)
+		if (s_len > 0)
 			break ;
 		i++;
 	}
@@ -101,7 +78,7 @@ char	*indiv_str(char *str, int *arr, int arr_size, int i)
 	return (tmp);
 }
 
-char	**ft_split(char *str, char *charset)
+char	**ft_split(char const *s, char c)
 {
 	char	**return_s;
 	int		*arr;
@@ -109,12 +86,12 @@ char	**ft_split(char *str, char *charset)
 	int		i;
 
 	i = 0;
-	arr = make_arr (str, charset, str_len(str));
-	count_s = str_count (str, arr, str_len(str));
+	arr = make_arr (s, c, ft_strlen(s));
+	count_s = str_count (s, arr, ft_strlen(s));
 	return_s = (char **)malloc(sizeof(char *) * count_s + 1);
 	while (i < count_s)
 	{
-		return_s[i] = indiv_str (str, arr, str_len(str), 0);
+		return_s[i] = indiv_str (s, arr, ft_strlen(s), 0);
 		i++;
 	}
 	return_s[count_s] = 0;
