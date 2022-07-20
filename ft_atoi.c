@@ -6,11 +6,11 @@
 /*   By: jhwang2 <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 14:53:47 by jhwang2           #+#    #+#             */
-/*   Updated: 2022/07/11 13:39:07 by jhwang2          ###   ########.fr       */
+/*   Updated: 2022/07/15 20:18:40 by jhwang2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	check_string(char *str);
+int	check_string(const char *str);
 
 int	minus_atoi(const char *str, int minus)
 {
@@ -30,7 +30,7 @@ int	minus_atoi(const char *str, int minus)
 	return (0);
 }
 
-int	check_string(char *str)
+int	check_string(const char *str)
 {
 	int	return_atoi;
 

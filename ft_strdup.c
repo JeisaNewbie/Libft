@@ -6,10 +6,10 @@
 /*   By: jhwang2 <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 09:39:41 by jhwang2           #+#    #+#             */
-/*   Updated: 2022/07/11 13:57:18 by jhwang2          ###   ########.fr       */
+/*   Updated: 2022/07/15 18:56:23 by jhwang2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <libft.h>
+#include "libft.h"
 
 char	*ft_strdup(const char *s1)
 {
@@ -17,8 +17,6 @@ char	*ft_strdup(const char *s1)
 	int		i;
 	int		j;
 
-	if (s1 == 0)
-		return (0);
 	i = 0;
 	while (s1[i])
 		i++;

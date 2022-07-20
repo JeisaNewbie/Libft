@@ -5,17 +5,17 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhwang2 <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/31 23:09:53 by jhwang2           #+#    #+#             */
-/*   Updated: 2022/07/11 09:45:34 by jhwang2          ###   ########.fr       */
+/*   Created: 2022/07/13 13:35:31 by jhwang2           #+#    #+#             */
+/*   Updated: 2022/07/14 19:59:40 by jhwang2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	size_t	len_dest;
+	size_t	len_dst;
 	size_t	len_src;
-	size_t	len_snd;
+	size_t	len_dns;
 	size_t	size;
 
 	len_src = 0;
@@ -24,7 +24,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 		len_src++;
 	while (dst[len_dst] != '\0')
 		len_dst++;
-	len_snd = len_src + len_dst;
+	len_dns = len_dst + len_src;
 	if (dstsize <= len_dst)
 		return (dstsize + len_src);
 	size = dstsize - len_dst - 1;
@@ -36,5 +36,5 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 		size--;
 	}
 	dst[len_dst] = '\0';
-	return (len_snd);
+	return (len_dns);
 }

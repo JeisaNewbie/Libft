@@ -6,13 +6,15 @@
 /*   By: jhwang2 <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 14:59:53 by jhwang2           #+#    #+#             */
-/*   Updated: 2022/07/11 14:17:41 by jhwang2          ###   ########.fr       */
+/*   Updated: 2022/07/18 10:08:56 by jhwang2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include"libft.h"
 
 t_list	*ft_lstlast(t_list *lst)
 {
+	if (lst == 0)
+		return (0);
 	while (lst->next)
 		lst = lst->next;
 	return (lst);

@@ -6,14 +6,12 @@
 /*   By: jhwang2 <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 08:58:15 by jhwang2           #+#    #+#             */
-/*   Updated: 2022/07/11 14:08:53 by jhwang2          ###   ########.fr       */
+/*   Updated: 2022/07/15 18:53:33 by jhwang2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
 void	ft_bzero(void *s, size_t n)
 {
-	if (s == 0 || n == 0)
-		return ;
-	memset (s, 0, n);
+	ft_memset (s, 0, n);
 }

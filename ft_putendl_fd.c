@@ -6,7 +6,7 @@
 /*   By: jhwang2 <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 09:37:57 by jhwang2           #+#    #+#             */
-/*   Updated: 2022/07/11 09:38:07 by jhwang2          ###   ########.fr       */
+/*   Updated: 2022/07/14 23:02:18 by jhwang2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -14,5 +14,5 @@
 void	ft_putendl_fd(char *s, int fd)
 {
 	ft_putstr_fd (s, fd);
-	write (1, "\n", 1);
+	write (fd, "\n", 1);
 }

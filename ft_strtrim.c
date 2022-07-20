@@ -6,10 +6,10 @@
 /*   By: jhwang2 <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 09:43:39 by jhwang2           #+#    #+#             */
-/*   Updated: 2022/07/11 09:43:53 by jhwang2          ###   ########.fr       */
+/*   Updated: 2022/07/18 15:27:03 by jhwang2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <libft.h>
+#include "libft.h"
 
 int	check_same(char c, char const *set)
 {
@@ -30,25 +30,24 @@ int	check_same(char c, char const *set)
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	char	*tmp;
-	int		len_s1;
-	int		check_f;
-	int		check_l;
+	int		index_f;
+	int		index_l;
 
-	if (s1 == 0 || set == 0)
-		return (0);
-	len_s1 = ft_strlen(s1);
-	tmp = (char *)malloc(sizeof(char) * len_s1 + 1);
+	index_l = ft_strlen(s1);
+	index_f = 0;
+	index_l = index_l - 1;
+	while (check_same (s1[index_f], set) && (index_f < index_l))
+		index_f++;
+	while (check_same (s1[index_l], set) && (index_f < index_l))
+		index_l--;
+	tmp = (char *)malloc(sizeof(char) * (index_l - index_f) + 2);
 	if (tmp == 0)
 		return (0);
-	check_f =  check_same (s1[0], set);
-	check_l =  check_same (s1[len_s1 - 1]);
-	if (check_f == 1 && check_l == 1)
-		ft_strlcpy (tmp, &s1[1], len_s1);
-	else if (check_f == 1 && check_l == 0)
-		ft_strlcpy (tmp, &s1[1], len_s1 + 1);
-	else if (check_f == 0 && check_l == 1)
-		ft_strlcpy (tmp, s1, len_s1);
-	else
-		ft_strlcpy (tmp, s1, len_s1 +1);
+	if (index_f == index_l && check_same (s1[index_f], set))
+	{
+		tmp[0] = '\0';
+		return (tmp);
+	}
+	ft_strlcpy (tmp, &s1[index_f], (index_l - index_f) + 2);
 	return (tmp);
 }

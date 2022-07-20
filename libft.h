@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chanheki <chanheki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jhwang2 <jhwang2@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/06 18:40:50 by chanheki          #+#    #+#             */
-/*   Updated: 2022/07/06 21:58:25 by chanheki         ###   ########.fr       */
+/*   Created: 2022/07/20 14:45:08 by jhwang2           #+#    #+#             */
+/*   Updated: 2022/07/20 14:45:43 by jhwang2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H	// 다시 확인해야됨
+#ifndef LIBFT_H	
 # define LIBFT_H
 
 # include <stdlib.h>
@@ -23,30 +23,29 @@ typedef struct s_list
 	struct s_list	*next;
 }	t_list;
 
-void		*memset(void *s, int c, size_t n);
-void		bzero(void *s, size_t n);
-void		*memcpy(void *dest, const void *src, size_t n);
-void		*memccpy(void *dest, const void *src, int c, size_t n);
-void		*memmove(void *dest, const void *src, size_t n);
-void		*memchr(const void *s, int c, size_t n);
-int			memcmp(const void *s1, const void *s2, size_t n);
-size_t		strlen(const char *s);
-int			isalnum(int c);
-int			isalpha(int c);
-int			isdigit(int c);
-int			isprint(int c);
-int			isascii(int c);
-int			toupper(int c);
-int			tolower(int c);
-char		*strchr(const char *s, int c);
-char		*strrchr(const char *s, int c);
-int			strncmp(const char *s1, const char *s2, size_t n);
-size_t		strlcpy(char *dst, const char *src, size_t size);
-size_t		strlcat(char *dst, const char *src, size_t size);
-char		*strnstr(const char *big, const char *little, size_t len);
-int			atoi(const char *nptr);
-char		*strdup(const char *s);
-void		*calloc(size_t nmemb, size_t size);
+void		*ft_memset(void *s, int c, size_t n);
+void		ft_bzero(void *s, size_t n);
+void		*ft_memcpy(void *dest, const void *src, size_t n);
+void		*ft_memmove(void *dest, const void *src, size_t n);
+void		*ft_memchr(const void *s, int c, size_t n);
+int			ft_memcmp(const void *s1, const void *s2, size_t n);
+size_t		ft_strlen(const char *s);
+int			ft_isalnum(int c);
+int			ft_isalpha(int c);
+int			ft_isdigit(int c);
+int			ft_isprint(int c);
+int			ft_isascii(int c);
+int			ft_toupper(int c);
+int			ft_tolower(int c);
+char		*ft_strchr(const char *s, int c);
+char		*ft_strrchr(const char *s, int c);
+int			ft_strncmp(const char *s1, const char *s2, size_t n);
+size_t		ft_strlcpy(char *dst, const char *src, size_t size);
+size_t		ft_strlcat(char *dst, const char *src, size_t size);
+char		*ft_strnstr(const char *big, const char *little, size_t len);
+int			ft_atoi(const char *nptr);
+char		*ft_strdup(const char *s);
+void		*ft_calloc(size_t nmemb, size_t size);
 char		*ft_substr(char const *s, unsigned int start, size_t len);
 char		*ft_strjoin(char const *s1, char const *s2);
 char		*ft_strtrim(char const *s1, char const *set);
@@ -64,6 +63,7 @@ void		ft_lstdelone(t_list *lst, void (*del)(void *));
 void		ft_lstadd_back(t_list **alst, t_list *new);
 t_list		*ft_lstlast(t_list *lst);
 int			ft_lstsize(t_list *lst);
+void		ft_striteri(char *s, void (*f)(unsigned int, char *));
 void		ft_lstadd_front(t_list **alst, t_list *new);
 t_list		*ft_lstnew(void *content);
 

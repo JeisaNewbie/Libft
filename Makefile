@@ -3,16 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: chanheki <chanheki@student.42.fr>          +#+  +:+       +#+         #
+#    By: jhwang2 <jhwang2@student.42seoul.k>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/07/06 12:06:46 by chanheki          #+#    #+#              #
-#    Updated: 2022/07/11 12:43:15 by jhwang2          ###   ########.fr        #
+#    Created: 2022/07/20 14:45:57 by jhwang2           #+#    #+#              #
+#    Updated: 2022/07/20 14:46:03 by jhwang2          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-
 NAME		=	libft.a
-SRC			=	ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c\
+SRC			=	ft_memset.c ft_bzero.c ft_memcpy.c\
 				ft_memmove.c ft_memchr.c ft_memcmp.c ft_strlen.c\
 				ft_strlcpy.c ft_strlcat.c ft_strchr.c ft_strrchr.c\
 				ft_strnstr.c ft_strncmp.c ft_atoi.c ft_isalpha.c\
@@ -21,7 +20,7 @@ SRC			=	ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c\
 				\
 				ft_substr.c ft_strjoin.c ft_strtrim.c ft_split.c\
 				ft_itoa.c ft_strmapi.c ft_putchar_fd.c ft_putstr_fd.c\
-				ft_putendl_fd.c ft_putnbr_fd.c
+				ft_putendl_fd.c ft_putnbr_fd.c ft_striteri.c
 OBJ			=	$(SRC:.c=.o)
 
 BONUS_SRC	=	ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c\
@@ -30,7 +29,7 @@ BONUS_SRC	=	ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c\
 BONUS_OBJ	=	$(BONUS_SRC:.c=.o)
 
 CFLAGS		=	-Wall -Wextra -Werror
-CC			=	GCC
+CC			=	CC
 
 ifdef WITH_BONUS
 	OBJECTS = $(OBJ) $(BONUS_OBJ)
@@ -55,6 +54,8 @@ clean:
 fclean : clean
 	@rm -f $(NAME)
 
-re:			fclean all
+re:
+	make fclean
+	make all
 
 .PHONY	:	all bonus clean fclean re

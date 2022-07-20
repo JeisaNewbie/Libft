@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jhwang2 <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/13 10:39:23 by jhwang2           #+#    #+#             */
+/*   Updated: 2022/07/15 20:58:42 by jhwang2          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 #include "libft.h"
 
 int	ft_len(int n)
@@ -50,7 +61,7 @@ void	ft_putnbr(char *s, int n, int len_n)
 		recursion (s, n, len_n - 1);
 }
 
-char *ft_itoa(int n)
+char	*ft_itoa(int n)
 {
 	char	*tmp;
 	int		len_n;
@@ -61,7 +72,7 @@ char *ft_itoa(int n)
 		len_n = 11;
 	else
 		len_n = ft_len(n);
-	tmp = (char *)malloc(sizeof(char *) * len_n + 1);
+	tmp = (char *)malloc(sizeof(char) * len_n + 1);
 	if (tmp == 0)
 		return (0);
 	ft_putnbr (tmp, n, len_n);

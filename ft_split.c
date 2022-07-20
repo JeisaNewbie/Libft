@@ -3,95 +3,109 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jhwang2 <jhwang2@student.42seoul.k>        +#+  +:+       +#+        */
+/*   By: jhwang2 <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/08 19:52:51 by jhwang2           #+#    #+#             */
-/*   Updated: 2022/07/11 09:39:00 by jhwang2          ###   ########.fr       */
+/*   Created: 2022/07/18 12:03:37 by jhwang2           #+#    #+#             */
+/*   Updated: 2022/07/18 14:52:06 by jhwang2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdlib.h>
+#include "libft.h"
 
-int	*make_arr(char *str, char c, int str_size)
+int	str_count(char *str, char c)
 {
-	int	*arr;
-	int	i;
-
-	arr = (int *)malloc(sizeof(int) * str_size + 1);
-	if (arr == 0)
-		return (arr);
-	i = 0;
-	while (str[i] != '\0')
-	{
-		arr[i] = 0;
-		if (str[i] == c)
-			arr[i] = 1;
-		i++;
-	}
-	arr[i] = '\0';
-	return (arr);
-}
-
-int	str_count(char *str, int *arr, int size)
-{
-	int	i;
-	int	count;
+	size_t	i;
+	int		count;
 
 	i = 0;
 	count = 0;
-	while (i < size)
+	while (str[i] == c && str[i] != '\0')
+		i++;
+	while (str[i])
 	{
-		if (arr[i] == 0)
+		if (str[i] != c)
 		{
-			while (arr[i] == 0 && str[i] != '\0')
+			while (str[i] != c && str[i] != '\0')
 				i++;
 			count++;
 		}
+		if (str[i] == '\0')
+			return (count);
 		i++;
 	}
 	return (count);
 }
 
-char	*indiv_str(char *str, int *arr, int str_size, int i)
+int	str_len(char **str, char c)
 {
-	char	*tmp;
-	int		s_len;
-	int		start_index;
+	int	count;
 
-	s_len = 0;
-	start_index = 0;
-	tmp = (char *)malloc(sizeof(char) * str_size + 1);
-	if (tmp == 0)
-		return (0);
-	while (i < str_size)
+	count = 0;
+	while (**str == c)
+		(*str)++;
+	while (**str != c && **str != '\0')
 	{
-		while (arr[i] == 0)
-		{
-			s_len++;
-			tmp[start_index++] = str[i];
-			arr[i++] = 1;
-		}
-		if (s_len > 0)
-			break ;
+		count++;
+		(*str)++;
+	}
+	return (count);
+}
+
+void	free_all(char **str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] != 0)
+	{
+		free (str[i]);
 		i++;
 	}
-	tmp[count] = '\0';
-	return (tmp);
+}
+
+char	*indiv_str(int str_len, char *str)
+{
+	char	*tmp1;
+	char	*tmp2;
+	int		i;
+
+	tmp1 = (char *)malloc(sizeof(char) * str_len + 1);
+	if (tmp1 == 0)
+		return (0);
+	tmp2 = str - str_len;
+	i = 0;
+	while (i < str_len)
+	{
+		tmp1[i] = *tmp2;
+		i++;
+		tmp2++;
+	}
+	tmp1[i] = '\0';
+	return (tmp1);
 }
 
 char	**ft_split(char const *s, char c)
 {
 	char	**return_s;
-	int		*arr;
+	char	*tmp;
 	int		count_s;
 	int		i;
 
+	tmp = (char *)s;
 	i = 0;
-	arr = make_arr (s, c, ft_strlen(s));
-	count_s = str_count (s, arr, ft_strlen(s));
-	return_s = (char **)malloc(sizeof(char *) * count_s + 1);
+	count_s = str_count (tmp, c);
+	return_s = (char **)malloc(sizeof(char *) * (count_s + 1));
+	if (return_s == 0)
+		return (0);
 	while (i < count_s)
 	{
-		return_s[i] = indiv_str (s, arr, ft_strlen(s), 0);
+		return_s[i] = indiv_str (str_len(&tmp, c), tmp);
+		if (return_s[i] == 0)
+		{
+			free_all (return_s);
+			free (return_s);
+			return (0);
+		}
 		i++;
 	}
 	return_s[count_s] = 0;

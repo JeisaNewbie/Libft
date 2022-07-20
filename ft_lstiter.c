@@ -6,15 +6,13 @@
 /*   By: jhwang2 <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 17:18:35 by jhwang2           #+#    #+#             */
-/*   Updated: 2022/07/11 09:06:59 by jhwang2          ###   ########.fr       */
+/*   Updated: 2022/07/18 10:19:52 by jhwang2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
 void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	if (lst == 0 || f == 0)
-		return ;
 	while (lst)
 	{
 		f(lst->content);
